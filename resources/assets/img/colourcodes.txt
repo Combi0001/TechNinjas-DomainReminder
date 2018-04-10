@@ -1,0 +1,7 @@
+see colorcodes.png for visual indicator
+#f0433a - logo and links
+#540032 - top background
+
+#2e112d - top part of content in home page
+#820333 - mid part of content in home page
+#c928c3 - bot part of content in home page
