@@ -14,16 +14,13 @@ class CreateEmailsTable extends Migration
     public function up()
     {
         Schema::create('email', function (Blueprint $table) {
-            $table->uuid('uuid')->unique();
+            $table->increments('id');
             $table->string('email');
             $table->uuid('user_id');
             $table->timestamps();
 
-            // Setup primary column
-            $table->primary('uuid');
-
             // Setup table relation constrains
-            $table->foreign('user_id')->references('uuid')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

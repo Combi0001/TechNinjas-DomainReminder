@@ -14,7 +14,7 @@ class CreateDomainsTable extends Migration
     public function up()
     {
         Schema::create('domains', function (Blueprint $table) {
-            $table->uuid('uuid')->unique();
+            $table->increments('id');
             $table->string('domain');
             $table->enum('status', [
                 'AVAILABLE',
@@ -23,9 +23,6 @@ class CreateDomainsTable extends Migration
             $table->dateTime('expiry');
             $table->dateTime('last_checked');
             $table->timestamps();
-
-            // Setup primary column
-            $table->primary('uuid');
         });
     }
 

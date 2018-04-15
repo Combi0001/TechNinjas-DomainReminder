@@ -20,8 +20,8 @@ class CreateUserDomainTable extends Migration
             $table->uuid('domain_id');
 
             // Setup table relation constrains
-            $table->foreign('user_id')->references('uuid')->on('users');
-            $table->foreign('domain_id')->references('uuid')->on('domains');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('domain_id')->references('id')->on('domains');
         });
     }
 
