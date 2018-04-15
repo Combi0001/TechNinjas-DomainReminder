@@ -19,9 +19,6 @@ class CreateUserDomainTable extends Migration
             $table->uuid('user_id');
             $table->uuid('domain_id');
 
-            // Setup primary column
-            $table->primary('id');
-
             // Setup table relation constrains
             $table->foreign('user_id')->references('uuid')->on('users');
             $table->foreign('domain_id')->references('uuid')->on('domains');
