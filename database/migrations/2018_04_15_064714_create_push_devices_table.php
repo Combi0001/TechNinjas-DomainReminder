@@ -15,7 +15,7 @@ class CreatePushDevicesTable extends Migration
     {
         Schema::create('push_devices', function (Blueprint $table) {
             $table->increments('id');
-            $table->uuid('user_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
 
             // Setup table relation constrains

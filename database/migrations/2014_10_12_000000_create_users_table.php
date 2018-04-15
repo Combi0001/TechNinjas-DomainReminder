@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('username')->unqiue();
             $table->string('password');
-            $table->uuid('default_email_id');
+            $table->unsignedInteger('default_email_id');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

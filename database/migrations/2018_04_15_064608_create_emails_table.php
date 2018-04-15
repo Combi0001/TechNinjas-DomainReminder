@@ -13,10 +13,10 @@ class CreateEmailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('email', function (Blueprint $table) {
+        Schema::create('emails', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email');
-            $table->uuid('user_id');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
 
             // Setup table relation constrains

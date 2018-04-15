@@ -16,8 +16,8 @@ class CreateUserDomainTable extends Migration
         Schema::create('user_domain', function (Blueprint $table) {
             // Setup table columns
             $table->increments('id');
-            $table->uuid('user_id');
-            $table->uuid('domain_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('domain_id');
 
             // Setup table relation constrains
             $table->foreign('user_id')->references('id')->on('users');
