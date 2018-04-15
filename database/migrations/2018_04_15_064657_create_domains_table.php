@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateDomainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            // Setup user table
+        Schema::create('domains', function (Blueprint $table) {
             $table->uuid('uuid')->unique();
-            $table->string('name');
-            $table->string('username')->unqiue();
-            $table->string('password');
-            $table->uuid('default_email_id');
-            $table->rememberToken();
+            $table->string('domain');
+            $table->enum('status', [
+                'AVAILABLE',
+                'UNAVAILABLE',
+            ])->nullable(true);
+            $table->dateTime('expiry');
+            $table->dateTime('last_checked');
             $table->timestamps();
-            $table->softDeletes();
 
             // Setup primary column
             $table->primary('uuid');
@@ -36,6 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('domains');
     }
 }

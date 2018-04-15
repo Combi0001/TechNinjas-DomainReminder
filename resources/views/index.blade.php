@@ -46,11 +46,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
                         <a class="nav-link link text-white display-4" href="https://domainreminder.net/">
-                            <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>Home</a>
+                            <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link text-white display-4" href="https://domainreminder.net"><span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>
-                            Information &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</a>
+                        <a class="nav-link link text-white display-4" href="https://domainreminder.net">
+                            <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>Information
+                        </a>
                     </li></ul>
                 <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="https://domainreminder.net/#"><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>
                         Login / Register</a></div>
