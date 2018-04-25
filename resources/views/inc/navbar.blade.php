@@ -1,6 +1,6 @@
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-custom">
-    <!--<nav class="navbar navbar-custom navbar-dark ">-->
+<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-customa">-->
+    <nav class="navbar navbar-expand-md navbar-dark "style="background-color: #540032 " >
     <div class="menu-logo">
         <div class="navbar-brand">
                 <span class="navbar-logo">
@@ -8,7 +8,7 @@
                          <img src="/img/icon-60x60.png" alt="domainrem" title="" style="height: 3.8rem;">
                     </a>
                 </span>
-            <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/">DomainReminder</a></span>
+            <span class="navbar-caption-wrap"><a class="navbar-caption ml-auto text-white display-4" href="/">DomainReminder.net</a></span>
         </div>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
