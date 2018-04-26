@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{--@section('title', 'Index')--}}
 @section('content')
 <section class="engine"><a href="https://domainrem.ws/c">best free site maker</a></section><section class="tabs1 cid-qP578ue5kZ" id="tabs1-m">
 

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="shortcut icon" href="/img/icon-60x60.png" type="image/x-icon">
     <meta name="description" content="">
-    <title>{{config('app.name', 'DomRem')}}</title>
+    <title>Domain Reminder - @yield('title')</title>
     <link rel="stylesheet" href="/css/scripts/tether/tether.min.css">
     <link rel="stylesheet" href="/css/scripts/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/css/scripts/bootstrap/bootstrap-grid.min.css">
@@ -18,17 +18,14 @@
     <link rel="stylesheet" href="/css/custom/mbr-additional.css" type="text/css">
     <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
 
-
-
 </head>
 <body>
 <div id="app">
     @include('inc.navbar')
-    @if($title != '')
+
         <div style="background-color: #2e112d !important; color: white; padding-left: 2%;">
-            <span >{{$title}}</span>
+            <span >@yield('title')</span>
         </div>
-    @endif
         @yield('content')
 </div>
 <section once="" class="cid-qP56U1Oxmu" id="footer6-l">
