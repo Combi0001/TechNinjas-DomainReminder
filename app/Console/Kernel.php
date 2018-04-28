@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Console\Commands\CheckDomainStatus;
+use App\Console\Commands\DomainChecker\CheckDomainStatus;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 

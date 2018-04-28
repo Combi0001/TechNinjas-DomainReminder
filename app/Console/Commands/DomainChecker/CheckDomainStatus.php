@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\DomainChecker;
 
 use App\Domain;
+use Grpc\Server;
 use Illuminate\Console\Command;
 use Whois\Client as WhoisClient;
+use Whois\Servers;
 use Whois\WhoisException;
 
 class CheckDomainStatus extends Command
@@ -23,6 +25,8 @@ class CheckDomainStatus extends Command
      */
     protected $description = 'Checks the status of the oldest last checked domains (batched in sizes of 100 domains)';
 
+    protected $mapping;
+
     /**
      * Create a new command instance.
      *
@@ -31,8 +35,17 @@ class CheckDomainStatus extends Command
     public function __construct()
     {
         parent::__construct();
+
+        $this->mapping = new ServerMapping();
     }
 
+    /**
+     * Parses the WHOIS repsonse string into a normalised array
+     *
+     * @param $server
+     * @param $response
+     * @return array
+     */
     public function parseWhoisResponse($server, $response) {
         // Initialise the results array
         $results = [];
@@ -42,9 +55,8 @@ class CheckDomainStatus extends Command
 
         // Loop through the lines and parse
         foreach ($lines as $line) {
-            // Check if the line doesn't contain a ":" character
+            // Skip line if it doesn't contain a ":" character
             if (strpos($line, ":") === false) {
-                // Skip line if it doesn't
                 continue;
             }
 
@@ -57,8 +69,22 @@ class CheckDomainStatus extends Command
             // Resets the rest of the array
             $value = implode(':', $split);
 
-            // TODO: Sort and rename the key based of the server that the whois response is sent from
-            $results[$key] = $value;
+            // Remove whitespaces
+            $key = trim($key);
+            $value = trim($value);
+
+            // Skip if value is empty
+            if (empty($value)) {
+                continue;
+            }
+
+            // Get normalised key name
+            $key = $this->mapping->mapKey($server, $key);
+
+            // If key could be normalised set the value
+            if (isset($key)) {
+                $results[$key] = $value;
+            }
         }
 
         return $results;
@@ -124,20 +150,62 @@ class CheckDomainStatus extends Command
                 // Prepare array for parsed reponse
                 $parsed = [];
 
+                // Prepare for primary server
+                $primary = null;
+                $primary_conflict = false;
+
                 // Loop through the responses based of the servers they where received by
                 foreach ($response->responses as $server => $data) {
                     // Parse the response and push it onto the response array
                     $parsed[$server] = $this->parseWhoisResponse($server, $data);
 
-                    // TODO: Check for primary server
+                    // Check if there has been a conflict with primary servers previously
+                    if (!$primary_conflict && isset($parsed[$server]['WHOIS Server'])) {
+                        // Get primary server
+                        $whois_server = $parsed[$server]['WHOIS Server'];
+
+                        // Check if primary server is set
+                        if ($this->mapping->hasServer($whois_server)) {
+                            // Check if primary has been set before
+                            if (!isset($primary)) {
+                                $primary = $whois_server;
+                            } else if ($primary !== $whois_server) {
+                                if ($debug) {
+                                    $this->line('Primary WHOIS server conflict has occurred between ' . $primary . ' and ' . $whois_server);
+                                }
+
+                                // Set primary to null and stop checking for primary
+                                $primary = null;
+                                $primary_conflict = true;
+                            }
+                        }
+                    }
                 }
 
-                // TODO: Add the primary server's details first
+                // Check if primary server is set
+                if (isset($primary) && isset($parsed[$primary])) {
+                    // Add the primary server details first
+
+                    // Loop through data
+                    foreach ($parsed[$primary] as $key => $value) {
+                        // Check if details already has the key set
+                        if (isset($details[$key])) {
+                            // Skip data
+                            continue;
+                        }
+
+                        // Add key and value pair to the details array
+                        $details[$key] = $value;
+                    }
+                }
 
                 // Loop through the parsed data and add it to the details
                 foreach ($parsed as $server => $data) {
-                    // TODO: Skip if primary sever
+                    if ($server === $primary) {
+                        continue;
+                    }
 
+                    // Loop through data
                     foreach ($data as $key => $value) {
                         // Check if details already has the key set
                         if (isset($details[$key])) {
@@ -148,6 +216,11 @@ class CheckDomainStatus extends Command
                         // Add key and value pair to the details array
                         $details[$key] = $value;
                     }
+                }
+
+                // Unset WHOIS Server as we don't want to store data
+                if (isset($details['WHOIS Server'])) {
+                    unset($details['WHOIS Server']);
                 }
 
                 // TODO: Update database to reflect parsed data
