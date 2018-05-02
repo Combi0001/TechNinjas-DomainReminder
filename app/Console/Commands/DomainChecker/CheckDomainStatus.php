@@ -3,10 +3,10 @@
 namespace App\Console\Commands\DomainChecker;
 
 use App\Domain;
-use Grpc\Server;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Whois\Client as WhoisClient;
-use Whois\Servers;
 use Whois\WhoisException;
 
 class CheckDomainStatus extends Command
@@ -16,7 +16,7 @@ class CheckDomainStatus extends Command
      *
      * @var string
      */
-    protected $signature = 'domain-reminder:check-domains {--debug}';
+    protected $signature = 'domain-reminder:check-domains {--debug} {--errors}';
 
     /**
      * The console command description.
@@ -46,7 +46,7 @@ class CheckDomainStatus extends Command
      * @param $response
      * @return array
      */
-    public function parseWhoisResponse($server, $response) {
+    public function parse_whois_response($server, $response) {
         // Initialise the results array
         $results = [];
 
@@ -83,11 +83,24 @@ class CheckDomainStatus extends Command
 
             // If key could be normalised set the value
             if (isset($key)) {
-                $results[$key] = $value;
+                if (empty($results[$key])) {
+                    $results[$key] = $value;
+                }
             }
         }
 
         return $results;
+    }
+
+    private function encode_value($key, $value)
+    {
+        switch($key) {
+            case "expiry":
+            case "registration_date":
+                return isset($value) ? Carbon::parse($value) : $value;
+            default:
+                return $value;
+        }
     }
 
     /**
@@ -136,13 +149,19 @@ class CheckDomainStatus extends Command
             try {
                 $response = $client->lookup($domain->domain);
             } catch (WhoisException $e) {
-                $this->error("Error sending request\n" . $e);
+                $this->line("Error sending request");
+
+                if ($this->option('errors')) {
+                    $this->error($e);
+                }
             }
 
             // Check if the we managed to get a response
             if (!isset($response)) {
-                // TODO: SET STATUS AS ERROR
-                continue;
+                // Update the domain in the DB to be unsupported status
+                $domain->status = 'UNSUPPORTED';
+                $domain->expiry = null;
+                $domain->registration_date = null;
             } else {
                 // Initialise the final resulting data
                 $details = [];
@@ -157,12 +176,12 @@ class CheckDomainStatus extends Command
                 // Loop through the responses based of the servers they where received by
                 foreach ($response->responses as $server => $data) {
                     // Parse the response and push it onto the response array
-                    $parsed[$server] = $this->parseWhoisResponse($server, $data);
+                    $parsed[$server] = $this->parse_whois_response($server, $data);
 
                     // Check if there has been a conflict with primary servers previously
-                    if (!$primary_conflict && isset($parsed[$server]['WHOIS Server'])) {
+                    if (!$primary_conflict && isset($parsed[$server]['whois_server'])) {
                         // Get primary server
-                        $whois_server = $parsed[$server]['WHOIS Server'];
+                        $whois_server = $parsed[$server]['whois_server'];
 
                         // Check if primary server is set
                         if ($this->mapping->hasServer($whois_server)) {
@@ -219,12 +238,35 @@ class CheckDomainStatus extends Command
                 }
 
                 // Unset WHOIS Server as we don't want to store data
-                if (isset($details['WHOIS Server'])) {
-                    unset($details['WHOIS Server']);
+                if (isset($details['whois_server'])) {
+                    unset($details['whois_server']);
                 }
 
-                // TODO: Update database to reflect parsed data
+                // Check status of the domain
+                $status = 'UNAVAILABLE';
+                if (empty($details)) {
+                    $status = 'AVAILABLE';
+
+                    $details = [
+                        'expiry' => null,
+                        'registration_date' => null,
+                    ];
+                }
+
+                // Set the status for the details
+                $details['status'] = $status;
+
+                // Update the Database entry
+                foreach ($details as $key => $value) {
+                    $domain->{$key} = $this->encode_value($key, $value);
+                }
             }
+
+            // Update the last checked date
+            $domain->last_checked = Carbon::now();
+
+            // Save the Database entry
+            $domain->save();
         }
     }
 }

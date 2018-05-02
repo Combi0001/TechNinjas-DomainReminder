@@ -9,9 +9,10 @@ class ServerMapping
     function __construct()
     {
         $this->mapping = $this->prepareMapping([
-            "Registrar Registration Expiration Date" => 'Expiry Date',
-            "Creation Date" => "Creation Date",
-            "Registrar WHOIS Server" => "WHOIS Server",
+            "Registrar Registration Expiration Date" => 'expiry',
+            "Registry Expiry Date" => 'expiry',
+            "Creation Date" => "registration_date",
+            "Registrar WHOIS Server" => "whois_server",
         ]);
     }
 
