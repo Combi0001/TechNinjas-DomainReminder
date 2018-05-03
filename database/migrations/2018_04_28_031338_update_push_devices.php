@@ -1,3 +1,4 @@
+/*
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -34,3 +35,4 @@ class UpdatePushDevices extends Migration
         });
     }
 }
+*/

@@ -14,6 +14,15 @@ class Domain extends Model
     protected $table = 'domains';
 
     /**
+     * The default value for attributes
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'status' => 'QUEUED',
+    ];
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
