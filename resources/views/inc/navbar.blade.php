@@ -3,12 +3,12 @@
     <nav class="navbar navbar-expand-md navbar-dark "style="background-color: #540032 " >
     <div class="menu-logo">
         <div class="navbar-brand">
-                <span class="navbar-logo">
+                <!--<span class="navbar-logo">
                     <a href="/">
                          <img src="/img/icon-60x60.png" alt="domainrem" title="" style="height: 3.8rem;">
                     </a>
-                </span>
-            <span class="navbar-caption-wrap"><a class="navbar-caption ml-auto text-white display-4" href="/">DomainReminder.net</a></span>
+                </span>-->
+                    <span class="navbar-caption-wrap"><a class="navbar-caption ml-auto text-white display-4" href="/"><img class="img-responsive" src="/img/template/logodesksmS.png"></a></span>
         </div>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,12 +26,18 @@
                             <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>Contact
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link link text-white display-4" href="/dashboard">
+                            <span class="mbri-info mbr-iconfont mbr-iconfont-btn"></span>Dashboard
+                        </a>
+                    </li>
                 </ul>
             @guest
                 <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href=""><span class="mbri-login mbr-iconfont mbr-iconfont-btn"></span>
                         Login / Register</a></div>
                 </div>
             @else
+                {{--
                 <!-- <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
@@ -54,5 +60,6 @@
                         </ul>
                     </div>
                 </li>   -->
+                --}}
             @endguest
 </nav>

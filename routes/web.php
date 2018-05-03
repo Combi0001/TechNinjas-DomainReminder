@@ -21,3 +21,8 @@ Route::get('/about', function(){
 Route::get('/contact', function(){
     return view('pages.contact');
 });
+/*
+ * temporary just for testing, will need to use for authenticating later
+ */
+Route::get('/dashboard', function(){
+    return view('pages.dashboard');});
