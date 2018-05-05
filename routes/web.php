@@ -25,3 +25,5 @@ Auth::routes();
  */
 Route::get('/dashboard', function(){
     return view('pages.dashboard');});
+
+Route::resource('domains', 'DomainsController');
