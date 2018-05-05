@@ -36,19 +36,19 @@ class User extends Authenticatable
     ];
 
     /**
+     * Gets the emails associated with the user
+     */
+    public function emails() {
+        return $this->hasMany(Email::class, 'user_id');
+    }
+
+    /**
      * Gets the default email for the user
      *
      * This email is used for reset password requests (etc)
      */
     public function defaultEmail() {
-        return $this->hasOne(Email::class, 'id', 'default_email_id');
-    }
-
-    /**
-     * Gets the emails associated with the user
-     */
-    public function emails() {
-        return $this->hasMany(Email::class, 'user_id');
+        return $this->emails()->where('is_default', '=', '1')->first();
     }
 
     /**

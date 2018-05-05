@@ -35,4 +35,3 @@ class UpdatePushDevices extends Migration
         });
     }
 }
-*/
