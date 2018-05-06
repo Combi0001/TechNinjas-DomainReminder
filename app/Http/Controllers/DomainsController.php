@@ -56,7 +56,7 @@ class DomainsController extends Controller
         $domain = new Domain();
         $domain->domain = $request->input('domain');
         $domain->last_checked = now();//this will need to be changed, to probs be, never
-
+        $domain->save();
         //$user_domain = new User_Domain
 
         $user_domain = new UserDomain();
@@ -64,7 +64,7 @@ class DomainsController extends Controller
         $user_domain->user_id = auth()->user()->id;
         $user_domain->domain_id = $domain->id;
 
-        $domain->save();
+
         $user_domain->save();
 
         return redirect('/domains');
