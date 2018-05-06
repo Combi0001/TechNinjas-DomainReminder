@@ -13,6 +13,10 @@ class Email extends Model
      */
     protected $table = 'emails';
 
+    protected $fillable = [
+        'email', 'is_default', 'user_id'
+    ];
+
     /**
      * Gets the user attached to the email
      */
