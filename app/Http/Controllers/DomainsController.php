@@ -17,10 +17,7 @@ class DomainsController extends Controller
     public function index()
     {
 
-        $allDomains = Domain::all();
         $user_id = auth()->user('id');
-        $user = User::find("$user_id");
-        $users_domains = UserDomain::findMany($user_id);
         $domArray = array();
 
         foreach(UserDomain::all() as $ud)
@@ -29,10 +26,6 @@ class DomainsController extends Controller
                     if($dom->id == $ud->domain_id)
                         $domArray[] = $dom;
 
-//        foreach ($allDomains as $dom)
-//            foreach ($users_domains as $ud)
-//                if($ud->id == $dom->id)
-//                    $domArray[] = $dom;
 
 
         return view('domains.index')->with('domains', $domArray);
@@ -63,13 +56,15 @@ class DomainsController extends Controller
         $domain = new Domain();
         $domain->domain = $request->input('domain');
         $domain->last_checked = now();//this will need to be changed, to probs be, never
-        $domain->save();
+
         //$user_domain = new User_Domain
 
         $user_domain = new UserDomain();
         $user_domain->timestamps= false;
         $user_domain->user_id = auth()->user()->id;
         $user_domain->domain_id = $domain->id;
+
+        $domain->save();
         $user_domain->save();
 
         return redirect('/domains');

@@ -20,10 +20,5 @@ Route::get('/contact', function(){
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
-/*
- * temporary just for testing, will need to use for authenticating later
- */
-Route::get('/dashboard', function(){
-    return view('pages.dashboard');});
 
 Route::resource('domains', 'DomainsController');

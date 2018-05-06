@@ -4,6 +4,10 @@
 <section class="engine"><a href="https://domainrem.ws/c">best free site maker</a></section><section class="tabs1 cid-qP578ue5kZ" id="tabs1-m">
 
     <div class="container">
+        <p>Here at domainreminder.net we do the hard work for you. Ever wanted to be informed on when a domain name that
+            you want becomes available? And don’t want to have to check all the time, or perhaps you forget to check?
+            Well if you let us know what domain you are after we will let you know when a change happens so that you
+            are able to do what you need to with it faster! <a href="/register">Register</a> Now and get started</p>
         <h2 class="mbr-white align-center pb-5 mbr-fonts-style mbr-bold display-2">LOREM IPSUM YOUR DOMAIN IS YOURS</h2>
         <div class="media-container-row">
             <div class="col-12 col-md-8">
@@ -21,7 +25,8 @@
                     <div id="tab1" class="tab-pane in active" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="mbr-text py-5 mbr-fonts-style display-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p class="mbr-text py-5 mbr-fonts-style display-7">Never have to worry about it again, we will store them so that you will never forget.
+                                    </p>
                             </div>
                         </div>
                     </div>
@@ -29,7 +34,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="mbr-text py-5 mbr-fonts-style display-7">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    When we find that a domain you are after has changed we will let you know. Never miss a chance at a domain again..
                                 </p>
                             </div>
                         </div>
