@@ -2,17 +2,17 @@
 @section('title', 'Contact')
 @section('content')
     <div class="container">
-        <div class="jumbotron text-center">
-            <h1>Contact</h1>
-            blah<br>
-            blah<br>
-            blah<br>
-            blah<br>
-            blah<br>
-            blah<br>
-            <p>
+        <div class="text-center">
+            <div class="h1">Contact</div>
+            blah
+            blah
+            blah
+            blah
+            blah
+            blah
+            <span>
                 Contact us form goes here
-            </p>
+            </span>
         </div>
     </div>
 @endsection

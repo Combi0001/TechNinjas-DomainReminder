@@ -20,5 +20,6 @@ Route::get('/contact', function(){
 });
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::resource('domains', 'DomainsController');
