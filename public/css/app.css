@@ -10417,3 +10417,50 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.navbar-dark {
+  background-color: #540032 !important;
+}
+
+.btn-primary {
+  background-color: #ABFFCD;
+}
+
+.card {
+  margin-top: 50px;
+  background-color: #b40447;
+  color: #eeeeee;
+}
+
+.card-header {
+  background-color: #820333;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#app {
+  background-color: #2e112d !important;
+}
+
+#forgot {
+  color: #2e112d;
+  font-weight: 500;
+}
+
+.footer {
+  padding: 35px;
+}
+
+.light-text {
+  color: #eeeeee;
+}
+
+.tick {
+  display: inline-block;
+  position: relative;
+  top: -40px;
+  left: 110%;
+  height: 32px;
+  width: 32px;
+}
+
