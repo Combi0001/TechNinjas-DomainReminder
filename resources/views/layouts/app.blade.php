@@ -30,6 +30,7 @@
 
         <div style="background-color: #2e112d !important; color: white; padding-left: 2%;">
             <span >@yield('title')</span>
+            @include('inc.messages')
         </div>
         @yield('content')
 </div>
