@@ -484,6 +484,9 @@ body {
 .text-black {
   color: #000000 !important;
 }
+.text-blue {
+  color: #45d0ff !important;;
+}
 a.text-primary:hover,
 a.text-primary:focus {
   color: #0b566f !important;
@@ -515,6 +518,10 @@ a.text-white:focus {
 a.text-black:hover,
 a.text-black:focus {
   color: #4d4d4d !important;
+}
+a.text-blue:hover,
+a.text-blue:focus {
+  color: #00aeea !important;;
 }
 .alert-success {
   background-color: #70c770;

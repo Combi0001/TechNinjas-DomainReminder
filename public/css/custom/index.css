@@ -2,6 +2,19 @@
 section {
   background-color: #eeeeee; }
 
+#app {
+  min-height: calc(100vh - 108px);
+}
+
+.nav-item {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1rem;
+}
+.nav-item.dropdown .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
 section,
 .container,
 .container-fluid {

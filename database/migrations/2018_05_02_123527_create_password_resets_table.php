@@ -1,10 +1,8 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
-class AddUserEmailConstraint extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +11,13 @@ class AddUserEmailConstraint extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('default_email_id')->references('id')->on('emails');
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('email');
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -25,8 +25,6 @@ class AddUserEmailConstraint extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_default_user_id_foreign');
-        });
+        Schema::dropIfExists('password_resets');
     }
 }

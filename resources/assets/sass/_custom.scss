@@ -1,0 +1,50 @@
+.navbar-dark {
+  background-color: $navbar-color !important;
+}
+
+.btn-primary {
+  background-color: $login-color;
+}
+
+.card {
+  margin-top: 50px;
+  background-color: lighten($medium-color,10);
+  color: $light-text;
+}
+
+.card-header {
+  background-color: $medium-color;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#app {
+  background-color: $dark-color !important;
+}
+
+#forgot {
+  color: $dark-color;
+  font-weight: 500;
+}
+
+.footer {
+  padding: 35px;
+}
+
+.light-text {
+  color: $light-text;
+}
+
+.tick {
+  display: inline-block;
+  position: relative;
+  top: -40px;
+  left: 110%;
+  height: 32px;
+  width: 32px;
+}
+
+.nav-item {
+  
+}
