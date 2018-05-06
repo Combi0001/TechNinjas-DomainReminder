@@ -2,7 +2,7 @@
 @section('title', 'About')
 @section('content')
 
-    <div class="container">
+    <div class="container light-text">
             <div class="h4">What does our site do?</div>
             <span>
                 With our site a user will be able to add a series of domains to a list that our site will check on and

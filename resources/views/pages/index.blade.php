@@ -4,29 +4,27 @@
 <section class="engine"><a href="https://domainrem.ws/c">best free site maker</a></section><section class="tabs1 cid-qP578ue5kZ" id="tabs1-m">
 
     <div class="container">
+        <h2 class="mbr-white align-center pb-5 mbr-fonts-style mbr-bold display-2">Welcome to DomainReminder</h2>
         <p>Here at domainreminder.net we do the hard work for you. Ever wanted to be informed on when a domain name that
             you want becomes available? And don’t want to have to check all the time, or perhaps you forget to check?
             Well if you let us know what domain you are after we will let you know when a change happens so that you
-            are able to do what you need to with it faster! <a href="/register">Register</a> Now and get started</p>
-        <h2 class="mbr-white align-center pb-5 mbr-fonts-style mbr-bold display-2">LOREM IPSUM YOUR DOMAIN IS YOURS</h2>
+            are able to do what you need to with it faster! <a href="/register">Register Now</a> and get started.</p>
         <div class="media-container-row">
             <div class="col-12 col-md-8">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item"><a class="nav-link mbr-fonts-style active show display-7" role="tab" data-toggle="tab" href="#tabs1-m_tab0" aria-selected="true">
-                            Never Forget</a></li>
+                            Never Forget</a> <img class="tick" src="/img/tick.png" /></li>
                     <li class="nav-item"><a class="nav-link mbr-fonts-style active show display-7" role="tab" data-toggle="tab" href="#tabs1-m_tab1" aria-selected="true">
-                            We Remind YOU</a></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style active show display-7" role="tab" data-toggle="tab" href="#tabs1-m_tab2" aria-selected="true">ALWAYS FREE</a></li>
-
-
-
+                            We Remind You</a> <img class="tick" src="/img/tick.png" /></li>
+                    <li class="nav-item"><a class="nav-link mbr-fonts-style active show display-7" role="tab" data-toggle="tab" href="#tabs1-m_tab2" aria-selected="true">Always Free</a> <img class="tick" src="/img/tick.png" /></li>
                 </ul>
                 <div class="tab-content">
                     <div id="tab1" class="tab-pane in active" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="mbr-text py-5 mbr-fonts-style display-7">Never have to worry about it again, we will store them so that you will never forget.
-                                    </p>
+                                <p class="mbr-text py-5 mbr-fonts-style display-7">
+                                  Never have to worry about it again, we will store them so that you will never forget.
+                                </p>
                             </div>
                         </div>
                     </div>
