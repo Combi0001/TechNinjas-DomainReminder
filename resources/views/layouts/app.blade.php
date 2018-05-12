@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/scripts/bootstrap/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="/css/scripts/dropdown/style.css">
     <link rel="stylesheet" href="/css/custom/index.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/custom/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">

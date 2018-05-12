@@ -10,6 +10,9 @@
 |
 */
 Route::get('/', function(){
+    return view('newindex');
+});
+Route::get('/old', function(){
     return view('pages.index');
 });
 Route::get('/about', function(){
@@ -22,4 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::resource('domains', 'DomainsController');
+Route::middleware(['auth'])->group(function () {
+    // Put all routes that need to be logged in for in here
+    Route::resource('domains', 'DomainsController');
+
+});

@@ -1,0 +1,52 @@
+.navbar {
+  height: 125px;
+}
+
+.navbar .menu-logo img {
+  display: none;
+}
+
+.navbar .menu-logo span {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar .navbar-collapse {
+  position: absolute;
+  top: 125px;
+  left: 0;
+  right: 0;
+  padding: 0 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.navbar .navbar-toggler {
+  -ms-flex-item-align: center;
+      align-self: center;
+  justify-self: flex-end;
+}
+
+@media (min-width: 768px) {
+  .navbar .menu-logo img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .navbar .menu-logo span {
+    display: none;
+  }
+
+  .navbar .navbar-collapse {
+    position: relative;
+    top: 0;
+    background: initial;
+  }
+}
+

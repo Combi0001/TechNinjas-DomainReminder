@@ -1,15 +1,10 @@
-
 <!--<nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-customa">-->
 <nav class="navbar navbar-expand-md navbar-dark ">
     <div class="menu-logo">
-        <div class="navbar-brand">
-            <!--<span class="navbar-logo">
-                <a href="/">
-                     <img src="/img/icon-60x60.png" alt="domainrem" title="" style="height: 3.8rem;">
-                </a>
-            </span>-->
-            <span class="navbar-caption-wrap"><a class="navbar-caption ml-auto text-white display-4" href="/"><img class="img-responsive" src="/img/template/domainreminderlogo.png"></a></span>
-        </div>
+        <a href="/">
+            <img class="img-responsive" src="/img/template/domainreminderlogo.png">
+            <span>Domain Reminder</span>
+        </a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
