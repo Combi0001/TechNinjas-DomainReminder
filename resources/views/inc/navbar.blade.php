@@ -3,7 +3,6 @@
     <div class="menu-logo">
         <a href="/">
             <img class="img-responsive" src="/img/template/domainreminderlogo.png">
-            <span>Domain Reminder</span>
         </a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

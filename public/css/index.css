@@ -51,25 +51,32 @@ header {
 }
 
 #content #splash .splash-heading {
-  display: none;
+  display: block;
+  font-family: 'Rubik', sans-serif;
+  font-size: 3rem;
 }
 
 @media (min-width: 768px) {
   #content #splash .splash-heading {
-    display: block;
     font-size: 4rem;
-    font-family: 'Rubik', sans-serif;
   }
 }
 
 #content #splash .splash-paragraph {
-  display: block;
+  display: none;
   font-size: 1rem;
 }
 
 @media (min-width: 768px) {
   #content #splash .splash-paragraph {
+    display: block;
     padding: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #content #splash {
+    padding: 125px 8rem 2rem;
   }
 }
 

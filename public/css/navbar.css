@@ -3,14 +3,13 @@
 }
 
 .navbar .menu-logo img {
-  display: none;
-}
-
-.navbar .menu-logo span {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 250px;
 }
 
 .navbar .navbar-collapse {
@@ -31,16 +30,7 @@
 
 @media (min-width: 768px) {
   .navbar .menu-logo img {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-
-  .navbar .menu-logo span {
-    display: none;
+    max-width: 400px;
   }
 
   .navbar .navbar-collapse {
