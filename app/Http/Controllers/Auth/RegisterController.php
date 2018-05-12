@@ -10,6 +10,7 @@ use Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Validator;
 
 class RegisterController extends Controller
@@ -55,7 +56,15 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:100|unique:users',
-            'email' => 'required|string|email|max:255',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('emails')->where(function ($query) {
+                    return $query->where('is_default', '=', 1);
+                }),
+            ],
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
