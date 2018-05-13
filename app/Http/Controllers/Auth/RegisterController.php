@@ -112,11 +112,16 @@ class RegisterController extends Controller
         ]);
     }
 
-
+    /**
+     * Verifies a email verification token
+     *
+     * @param $token
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     protected function verify($token) {
         $user = User::where('email_token', '=', $token)->first();
 
-        if ($user) {
+        if (!$user) {
             // Verify token doesn't exist
             abort(404);
         }

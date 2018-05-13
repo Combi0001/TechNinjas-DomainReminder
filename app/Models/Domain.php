@@ -38,6 +38,7 @@ class Domain extends Model
      * Gets the users attached to the domain
      */
     public function users() {
-        return $this->belongsToMany(User::class, 'user_domain');
+        return $this->belongsToMany(User::class, 'user_domain')
+                    ->withPivot(['notify']);
     }
 }

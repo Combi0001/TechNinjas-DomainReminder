@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('/verify/{token}', 'AuthRegisterController@verify')->name('verify');
+Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('verify');
 
 Route::middleware(['auth'])->group(function () {
     // Put all routes that need to be logged in for in here
