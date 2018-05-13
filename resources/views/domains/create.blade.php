@@ -7,7 +7,7 @@
     {!! Form::open(['action' => 'DomainsController@store', 'method' => 'POST']) !!}
     <div class="form-group">
         {{Form::label('domain', 'Domain Name')}}
-        {{Form::text('domain', '', ['class'=> 'form-control', 'placeholder'=> 'Domain Name'])}}
+        {{Form::text('domain', '', ['class'=> 'form-control', 'placeholder'=> 'http://www.example.com'])}}
     </div>
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}

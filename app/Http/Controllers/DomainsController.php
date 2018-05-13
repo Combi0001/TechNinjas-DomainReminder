@@ -50,7 +50,8 @@ class DomainsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'domain' => 'required'
+            //active_url:The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
+            'domain' => 'required|active_url'
     ]);
         //prevent from adding duplicate domains to the database, instead get the id of it if it exists in the database
         //and use that id to make a new row in the user_domain table with new user_id
