@@ -1,5 +1,7 @@
 .navbar {
   height: 125px;
+  -webkit-box-shadow: 0 0 12px 0 #000;
+          box-shadow: 0 0 12px 0 #000;
 }
 
 .navbar .menu-logo img {
