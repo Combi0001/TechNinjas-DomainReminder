@@ -27,8 +27,8 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('verify');
 
+Route::post('/domains/delete', 'DomainsController@deleteDomains');
 Route::middleware(['auth'])->group(function () {
     // Put all routes that need to be logged in for in here
-    Route::resource('domains', 'DomainsController');
-
+    Route::get('/domains',         'DomainsController@index');
 });

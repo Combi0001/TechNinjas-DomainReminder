@@ -121,49 +121,13 @@ class DomainsController extends Controller
         return redirect('/domains')->with('success', 'Domain added to your list');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $domain = Domain::find($id);
-        return view('domains.show')->with('domain', $domain);
-    }
+    public function deleteDomains(Request $request) {
+        $domains = $request->domains;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        foreach ($domains as $id) {
+            Auth()->user()->domains()->detach($id);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json(["success" => true]);
     }
 }

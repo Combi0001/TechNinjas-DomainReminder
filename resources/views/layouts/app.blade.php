@@ -21,20 +21,29 @@
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/custom/mbr-additional.css" type="text/css">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+    <script src="/js/scripts/jquery-3.3.1.min.js"></script>
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+    </script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
-
+    @yield('style')
 
 </head>
 <body>
 <div id="app">
     @include('inc.navbar')
 
-        <div style="color: white; padding-left: 2%;">
-            <span >@yield('title')</span>
-            @include('inc.messages')
-        </div>
-        @yield('content')
+    <div style="color: white; padding-left: 2%;">
+        @include('inc.messages')
+    </div>
+    @yield('content')
 </div>
 <footer class="footer cid-qP56U1Oxmu" >
     <div class="container align-center">
@@ -46,7 +55,6 @@
         </span>
     </div>
 </footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 <script src="/js/scripts/smoothscroll/smooth-scroll.js"></script>
@@ -55,5 +63,6 @@
 <script src="/js/scripts/mbr-tabs/mbr-tabs.js"></script>
 <script src="/js/custom/index.js"></script>
 
+@yield('scripts')
 </body>
 </html>

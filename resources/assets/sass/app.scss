@@ -13,5 +13,143 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.domain-header {
+  width: 100%;
+  height: 4rem;
+  background-color: $dark-color;
+  color: $light-text;
+
+  .heading {
+    float: left;
+
+    height: 4rem;
+    line-height: 4rem;
+    padding-left: 1rem;
+  }
+
+  .domain-actions {
+    float: right;
+    height: 4rem;
+    line-height: 4rem;
+
+    .action {
+      display: inline-block;
+      padding: 0 1rem;
+      height: 4rem;
+      cursor: pointer;
+
+      &.disabled {
+        color: darken($light-text, 50%);
+        cursor: not-allowed;
+      }
+
+      &:not(.disabled):hover {
+        background-color: lighten($dark-color, 10%);
+      }
+    }
+  }
+}
+
+.domain {
+  width: 100%;
+  &:nth-child(even) {
+    background: rgba(0,0,0,0.2);
+  }
+
+  &.heading {
+    font-weight: bold;
+    background: rgba(0,0,0,0.34);
+  }
+
+  .domain-line {
+    position: relative;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.25em;
+
+    .domain-info-toggle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: inline-block;
+      width: 3rem;
+      text-align: center;
+      font-size: 1em;
+    }
+
+    .domain-name {
+      position: absolute;
+      left: 3rem;
+      top: 0;
+      width: calc(40% - 3rem);
+      display: inline-block;
+
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .domain-status {
+      position: absolute;
+      right: 25%;
+      top: 0;
+      width: 25%;
+      display: inline-block;
+
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .domain-checked {
+      position: absolute;
+      right: 3rem;
+      top: 0;
+      width: calc(25% - 3rem);
+      display: inline-block;
+
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .domain-delete {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 3rem;
+      display: inline-block;
+      text-align: center;
+
+      cursor: pointer;
+
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+  }
+
+  .domain-info {
+    height: 0;
+    overflow: hidden;
+
+    padding-left: 5rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -webkit-transition: height 0.3s ease-in-out;
+    -moz-transition: height 0.3s ease-in-out;
+    -ms-transition: height 0.3s ease-in-out;
+    -o-transition: height 0.3s ease-in-out;
+    transition: height 0.3s ease-in-out;
+
+    &.show {
+      height: 50px;
+    }
+  }
+}
+
 // Alex's custom CSS
 @import 'custom';

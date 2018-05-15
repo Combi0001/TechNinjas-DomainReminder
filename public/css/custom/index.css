@@ -3,7 +3,7 @@ section {
   background-color: #eeeeee; }
 
 #app {
-  min-height: calc(100vh - 108px);
+  min-height: calc(100vh - 116px);
 }
 
 .nav-item {

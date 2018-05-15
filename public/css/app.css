@@ -10394,6 +10394,129 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.domain-header {
+  width: 100%;
+  height: 4rem;
+  background-color: #2e112d;
+  color: #eeeeee;
+}
+
+.domain-header .heading {
+  float: left;
+  height: 4rem;
+  line-height: 4rem;
+  padding-left: 1rem;
+}
+
+.domain-header .domain-actions {
+  float: right;
+  height: 4rem;
+  line-height: 4rem;
+}
+
+.domain-header .domain-actions .action {
+  display: inline-block;
+  padding: 0 1rem;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.domain-header .domain-actions .action.disabled {
+  color: #6f6e6e;
+  cursor: not-allowed;
+}
+
+.domain-header .domain-actions .action:not(.disabled):hover {
+  background-color: #531f51;
+}
+
+.domain {
+  width: 100%;
+}
+
+.domain:nth-child(even) {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.domain.heading {
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.34);
+}
+
+.domain .domain-line {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 1.25em;
+}
+
+.domain .domain-line .domain-info-toggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 3rem;
+  text-align: center;
+  font-size: 1em;
+}
+
+.domain .domain-line .domain-name {
+  position: absolute;
+  left: 3rem;
+  top: 0;
+  width: calc(40% - 3rem);
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.domain .domain-line .domain-status {
+  position: absolute;
+  right: 25%;
+  top: 0;
+  width: 25%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.domain .domain-line .domain-checked {
+  position: absolute;
+  right: 3rem;
+  top: 0;
+  width: calc(25% - 3rem);
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.domain .domain-line .domain-delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3rem;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.domain .domain-info {
+  height: 0;
+  overflow: hidden;
+  padding-left: 5rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: height 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out;
+}
+
+.domain .domain-info.show {
+  height: 50px;
+}
+
 .navbar-dark {
   background-color: #540032 !important;
 }
@@ -10413,10 +10536,6 @@ a.text-dark:focus {
   text-align: center;
   font-size: 16px;
   font-weight: 700;
-}
-
-#app {
-  background-color: #2e112d !important;
 }
 
 #forgot {
