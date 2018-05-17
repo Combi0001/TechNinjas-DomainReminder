@@ -1,9 +1,20 @@
+h5 {
+  color: $login-color !important;
+}
+
+.bio {
+  width:60%;
+  min-width:200px;
+  margin-left:20%;
+  padding:10px;
+}
+
 .navbar-dark {
   background-color: $navbar-color !important;
 }
 
 .btn-primary {
-  background-color: $login-color;
+  background-color: $login-color !important;
 }
 
 .card {
@@ -44,6 +55,11 @@
   width: 32px;
 }
 
-.nav-item {
-  
+#app {
+  background-color: $dark-color !important;
+}
+
+#forgot {
+  color: $dark-color;
+  font-weight: 500;
 }

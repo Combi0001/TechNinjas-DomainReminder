@@ -10517,12 +10517,23 @@ a.text-dark:focus {
   height: 50px;
 }
 
+h5 {
+  color: #ABFFCD !important;
+}
+
+.bio {
+  width: 60%;
+  min-width: 200px;
+  margin-left: 20%;
+  padding: 10px;
+}
+
 .navbar-dark {
   background-color: #540032 !important;
 }
 
 .btn-primary {
-  background-color: #ABFFCD;
+  background-color: #ABFFCD !important;
 }
 
 .card {
@@ -10560,3 +10571,11 @@ a.text-dark:focus {
   width: 32px;
 }
 
+#app {
+  background-color: #2e112d !important;
+}
+
+#forgot {
+  color: #2e112d;
+  font-weight: 500;
+}

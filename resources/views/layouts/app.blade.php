@@ -39,11 +39,13 @@
 <body>
 <div id="app">
     @include('inc.navbar')
-
-    <div style="color: white; padding-left: 2%;">
-        @include('inc.messages')
-    </div>
-    @yield('content')
+        <div style="color: white; padding-left: 2%;">
+            <!-- Don't think we'll want this here, we've got page title h1's in each of their views
+            - delete if no longer necessary-->
+            <!--<span >@yield('title')</span>-->
+            @include('inc.messages')
+        </div>
+        @yield('content')
 </div>
 <footer class="footer cid-qP56U1Oxmu" >
     <div class="container align-center">
