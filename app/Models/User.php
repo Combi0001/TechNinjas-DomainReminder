@@ -55,7 +55,8 @@ class User extends Authenticatable
      * Gets the domains associated with the user
      */
     public function domains() {
-        return $this->belongsToMany(Domain::class, 'user_domain');
+        return $this->belongsToMany(Domain::class, 'user_domain')
+                    ->withPivot(['notify']);
     }
 
     /**

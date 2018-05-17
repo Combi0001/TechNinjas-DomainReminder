@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\FQDN;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Domain;
 use App\User;
-use App\Models\UserDomain;
 
 class DomainsController extends Controller
 {
@@ -17,7 +18,8 @@ class DomainsController extends Controller
     public function index()
     {
 
-        $user_id = auth()->user('id');
+        // NOTE: the user function domains() already does this
+        /* $user_id = auth()->user('id');
         $domArray = array();
 
         //get domain ids with matching userid from the userdomain table
@@ -25,10 +27,12 @@ class DomainsController extends Controller
             //find the domain with matching domain id
             $domArray[] = Domain::find($ud->domain_id);
 
-        }
+        }*/
 
         //return the array of domains with matching user id to display for the user
-        return view('domains.index')->with('domains', $domArray);
+        return view('domains.index')->with([
+            "domains" => Auth()->user()->domains,
+        ]);
     }
 
     /**
@@ -50,10 +54,40 @@ class DomainsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            //active_url:The field under validation must have a valid A or AAAA record according to the dns_get_record PHP function.
-            'domain' => 'required|active_url'
-    ]);
-        //prevent from adding duplicate domains to the database, instead get the id of it if it exists in the database
+            'domain' => [
+                'required',
+                new FQDN(),
+            ]
+        ]);
+
+        $url = $request->input('domain');
+
+        $user_has = Auth()->user()->domains()->where('domain', '=', $url)->first();
+        if ($user_has) {
+            // User already has url in their list, ignore
+            return redirect('/domains')->with('error', 'You already have that domain added');
+        }
+
+        // Check if there is already a domain in the database with that url
+        $domain = Domain::where('domain', '=', $url)->first();
+
+        if (!$domain) {
+            // Domain doesn't exist, create new one
+            $domain = new Domain();
+            $domain->domain = $url;
+            $domain->last_checked = Carbon::createFromTimestampUTC(0);
+            $domain->save();
+
+            // Reload the new domain
+            $domain = $domain->refresh();
+        }
+
+        // Add relationship to user
+        Auth()->user()->domains()->attach($domain->id);
+
+        // NOTE: User Domains should not be a model, that table exists purely as a way to manage the relationship between the user and the domian
+        // NOTE: We can speed this up by sending it the the SQL server and checking all these things there
+        /*//prevent from adding duplicate domains to the database, instead get the id of it if it exists in the database
         //and use that id to make a new row in the user_domain table with new user_id
         //could theoretically add duplicates to user_domain table //TODO <- prevent that? domains get checked, so the info will be the same regardless of no. entries in user list
         $domain = new Domain();
@@ -83,53 +117,17 @@ class DomainsController extends Controller
         $user_domain->domain_id = $domain->id;
 
 
-        $user_domain->save();
+        $user_domain->save();*/
         return redirect('/domains')->with('success', 'Domain added to your list');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $domain = Domain::find($id);
-        return view('domains.show')->with('domain', $domain);
-    }
+    public function deleteDomains(Request $request) {
+        $domains = $request->domains;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        foreach ($domains as $id) {
+            Auth()->user()->domains()->detach($id);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json(["success" => true]);
     }
 }

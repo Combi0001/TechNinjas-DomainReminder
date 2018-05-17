@@ -3,9 +3,13 @@
 namespace App\Console\Commands\DomainChecker;
 
 use App\Domain;
+use App\Jobs\SendDomainStatusUpdates;
+use App\Mail\EmailStatusUpdate;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Mail;
 use Whois\Client as WhoisClient;
 use Whois\WhoisException;
 
@@ -103,6 +107,70 @@ class CheckDomainStatus extends Command
         }
     }
 
+    // List of users that need to be send the notifications
+    private $users = [];
+
+    /**
+     * Handles preparing the status changes for sending notifications
+     *
+     * @param Domain $domain
+     * @param $status
+     */
+    public function handleStatusChange(Domain $domain, $status) {
+        switch($domain->status) {
+            case "UNSUPPORTED":
+            case "QUEUED":
+            case "UNAVAILABLE":
+                if ($status === "UNAVAILABLE") {
+                    // No point in notifying about the domain
+                    return;
+                }
+                break;
+            case "AVAILABLE":
+                if ($status === "AVAILABLE") {
+                    // No point in notifying about the domain
+                    return;
+                }
+                break;
+        }
+
+        // Get list of users from the domain
+        $users = $domain->users;
+        foreach ($users as $user) {
+            // Check if the user wants to be notified about the domain
+            if ($user->pivot->notify) {
+                if (!isset($this->users[$user->id])) {
+                    $this->users[$user->id] = [];
+                }
+
+                if (!isset($this->users[$user->id][$status])) {
+                    $this->users[$user->id][$status] = [];
+                }
+
+                // Push the domain to the user table
+                $this->users[$user->id][$status][] = $domain->domain;
+            }
+        }
+    }
+
+    public function sendUpdateNotifications() {
+        foreach ($this->users as $user_id => $domains) {
+            // Get the user
+            $user = User::where('id', '=', $user_id)->first();
+
+            // Get the users emails
+            $emails = $user->emails()->select('email')->get();
+            $to_emails = [];
+
+            // Flatten the emails
+            foreach ($emails as $email) {
+                $to_emails[] = $email->email;
+            }
+
+            dispatch(new SendDomainStatusUpdates($domains, $to_emails));
+        }
+    }
+
     /**
      * Execute the console command.
      *
@@ -114,7 +182,7 @@ class CheckDomainStatus extends Command
         $debug = $this->option('debug');
 
         // Get 100 domains with last_checked going from smallest to largest
-        $domains = Domain::orderBy('last_checked', 'asc')->limit(100)->get();
+        $domains = Domain::where('last_checked', '<', DB::raw('DATE_SUB(NOW(), INTERVAL 12 HOUR)'))->orderBy('last_checked', 'asc')->limit(100)->get();
         $count = $domains->count();
 
         // Check if any domains found
@@ -253,6 +321,9 @@ class CheckDomainStatus extends Command
                     ];
                 }
 
+                // Send the required notification about the update in status
+                $this->handleStatusChange($domain, $status);
+
                 // Set the status for the details
                 $details['status'] = $status;
 
@@ -268,5 +339,12 @@ class CheckDomainStatus extends Command
             // Save the Database entry
             $domain->save();
         }
+
+        if ($debug) {
+            $this->line('Sending update emails');
+        }
+
+        // Send all the notifications to the users
+        $this->sendUpdateNotifications();
     }
 }
