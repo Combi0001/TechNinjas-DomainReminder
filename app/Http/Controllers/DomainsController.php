@@ -130,4 +130,28 @@ class DomainsController extends Controller
 
         return response()->json(["success" => true]);
     }
+
+    public function disableDomains(Request $request) {
+        $domains = $request->domains;
+
+        foreach ($domains as $id) {
+            Auth()->user()->domains()->updateExistingPivot($id, [
+                'notify' => false,
+            ]);
+        }
+
+        return response()->json(["success" => true]);
+    }
+
+    public function enableDomains(Request $request) {
+        $domains = $request->domains;
+
+        foreach ($domains as $id) {
+            Auth()->user()->domains()->updateExistingPivot($id, [
+                'notify' => true,
+            ]);
+        }
+
+        return response()->json(["success" => true]);
+    }
 }

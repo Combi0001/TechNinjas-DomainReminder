@@ -10406,12 +10406,32 @@ a.text-dark:focus {
   height: 4rem;
   line-height: 4rem;
   padding-left: 1rem;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .domain-header .heading {
+    display: inline-block;
+  }
 }
 
 .domain-header .domain-actions {
   float: right;
   height: 4rem;
   line-height: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+@media (min-width: 768px) {
+  .domain-header .domain-actions {
+    width: auto;
+  }
 }
 
 .domain-header .domain-actions .action {
@@ -10465,7 +10485,7 @@ a.text-dark:focus {
   position: absolute;
   left: 3rem;
   top: 0;
-  width: calc(40% - 3rem);
+  width: calc(35% - 3rem);
   display: inline-block;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -10473,7 +10493,7 @@ a.text-dark:focus {
 
 .domain .domain-line .domain-status {
   position: absolute;
-  right: 25%;
+  right: 30%;
   top: 0;
   width: 25%;
   display: inline-block;
@@ -10483,15 +10503,37 @@ a.text-dark:focus {
 
 .domain .domain-line .domain-checked {
   position: absolute;
-  right: 3rem;
+  right: 15%;
   top: 0;
-  width: calc(25% - 3rem);
-  display: inline-block;
+  width: calc(25%);
+  display: none;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.domain .domain-line .domain-delete {
+@media (min-width: 768px) {
+  .domain .domain-line .domain-checked {
+    display: inline-block;
+  }
+}
+
+.domain .domain-line .domain-enable {
+  position: absolute;
+  right: 3rem;
+  top: 0;
+  width: calc(15% - 3rem);
+  display: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .domain .domain-line .domain-enable {
+    display: inline-block;
+  }
+}
+
+.domain .domain-line .domain-checkbox {
   position: absolute;
   right: 0;
   top: 0;
