@@ -28,9 +28,10 @@
 <body>
 <div id="app">
     @include('inc.navbar')
-
         <div style="color: white; padding-left: 2%;">
-            <span >@yield('title')</span>
+            <!-- Don't think we'll want this here, we've got page title h1's in each of their views
+            - delete if no longer necessary-->
+            <!--<span >@yield('title')</span>-->
             @include('inc.messages')
         </div>
         @yield('content')
