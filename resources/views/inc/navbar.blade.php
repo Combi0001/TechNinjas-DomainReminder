@@ -39,10 +39,9 @@
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <ul>
-                            <li><a href="/home">Home</a></li>
                             <li><a href="/domains">Domains</a></li>
                             <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}">
+                                <a href="{{ route('logout') }}">
                                     {{ __('Logout') }}
                                 </a>
                             </li>
