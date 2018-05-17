@@ -13,10 +13,10 @@
             <div class="col-12 col-md-8">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item"><a class="nav-link mbr-fonts-style active show display-7" role="tab" data-toggle="tab" href="#tabs1-m_tab0" aria-selected="true">
-                            Never Forget</a> <img class="tick" src="/img/tick.png" /></li>
+                            Never Forget</a></li>
                     <li class="nav-item"><a class="nav-link mbr-fonts-style active show display-7" role="tab" data-toggle="tab" href="#tabs1-m_tab1" aria-selected="true">
-                            We Remind You</a> <img class="tick" src="/img/tick.png" /></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style active show display-7" role="tab" data-toggle="tab" href="#tabs1-m_tab2" aria-selected="true">Always Free</a> <img class="tick" src="/img/tick.png" /></li>
+                            We Remind You</a></li>
+                    <li class="nav-item"><a class="nav-link mbr-fonts-style active show display-7" role="tab" data-toggle="tab" href="#tabs1-m_tab2" aria-selected="true">Always Free</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="tab1" class="tab-pane in active" role="tabpanel">

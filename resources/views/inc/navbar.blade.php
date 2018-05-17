@@ -8,7 +8,7 @@
                      <img src="/img/icon-60x60.png" alt="domainrem" title="" style="height: 3.8rem;">
                 </a>
             </span>-->
-            <span class="navbar-caption-wrap"><a class="navbar-caption ml-auto text-white display-4" href="/"><img class="img-responsive" src="/img/template/domainreminderlogo.png"></a></span>
+            <span class="navbar-caption-wrap"><a class="navbar-caption ml-auto text-white display-4" href="/"><img class="img-responsive" src="/img/template/logodesksmS.png"></a></span>
         </div>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

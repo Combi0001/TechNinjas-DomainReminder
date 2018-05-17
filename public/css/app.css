@@ -10417,12 +10417,23 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+h5 {
+  color: #ABFFCD !important;
+}
+
+.bio {
+  width: 60%;
+  min-width: 200px;
+  margin-left: 20%;
+  padding: 10px;
+}
+
 .navbar-dark {
   background-color: #540032 !important;
 }
 
 .btn-primary {
-  background-color: #ABFFCD;
+  background-color: #ABFFCD !important;
 }
 
 .card {
@@ -10436,15 +10447,6 @@ a.text-dark:focus {
   text-align: center;
   font-size: 16px;
   font-weight: 700;
-}
-
-#app {
-  background-color: #2e112d !important;
-}
-
-#forgot {
-  color: #2e112d;
-  font-weight: 500;
 }
 
 .footer {
@@ -10464,3 +10466,11 @@ a.text-dark:focus {
   width: 32px;
 }
 
+#app {
+  background-color: #2e112d !important;
+}
+
+#forgot {
+  color: #2e112d;
+  font-weight: 500;
+}

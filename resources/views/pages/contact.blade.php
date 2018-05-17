@@ -3,16 +3,12 @@
 @section('content')
     <div class="container light-text">
         <div class="text-center">
-            <div class="h1">Contact</div>
-            blah
-            blah
-            blah
-            blah
-            blah
-            blah
-            <span>
-                Contact us form goes here
-            </span>
+            <h1 style="padding:30px;">Contact</h1>
+            <div style="margin-top:10%;">
+              <p>Got a question?</p>
+              <p>Just want to say hi or give us feedback?</p>
+              <p>Send us an email <a href="mailto:s3688859@student.rmit.edu.au">here</a>.</p>
+          </div>
         </div>
     </div>
 @endsection
