@@ -29,11 +29,19 @@ Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('verify');
 
 Route::middleware(['auth'])->group(function () {
     // Put all routes that need to be logged in for in here
-    Route::get('/domains',         'DomainsController@index');
-    Route::get('/domains/create',  'DomainsController@create');
-    Route::post('/domains/create', 'DomainsController@store');
 
-    Route::post('/domains/delete',  'DomainsController@deleteDomains');
-    Route::post('/domains/enable',  'DomainsController@enableDomains');
-    Route::post('/domains/disable', 'DomainsController@disableDomains');
+    Route::get('/verify', function() {
+        return view('verification');
+    });
+
+    Route::middleware(['verify'])->group(function() {
+        // Put all the routes that needs users to be verified for in here
+        Route::get('/domains',         'DomainsController@index');
+        Route::get('/domains/create',  'DomainsController@create');
+        Route::post('/domains/create', 'DomainsController@store');
+
+        Route::post('/domains/delete',  'DomainsController@deleteDomains');
+        Route::post('/domains/enable',  'DomainsController@enableDomains');
+        Route::post('/domains/disable', 'DomainsController@disableDomains');
+    });
 });

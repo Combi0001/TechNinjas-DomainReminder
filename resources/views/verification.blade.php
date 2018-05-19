@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(isset($user))
+    @if(Auth::user())
         <div>
-            Verification email has been sent to {{$user->defaultEmail()->email}}
+            Verification email has been sent to {{Auth::user()->defaultEmail()->email}}
+            Please verify email
         </div>
     @else
         Error
