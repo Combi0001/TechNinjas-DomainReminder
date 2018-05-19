@@ -64,6 +64,7 @@
 <script src="/js/scripts/touchswipe/jquery.touch-swipe.min.js"></script>
 <script src="/js/scripts/mbr-tabs/mbr-tabs.js"></script>
 <script src="/js/custom/index.js"></script>
+<script src="/js/popups.js"></script>
 
 @yield('scripts')
 </body>

@@ -8,6 +8,25 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+#alerts {
+  position: absolute;
+  left:0;
+  right: 0;
+  padding: 0 2rem;
+  margin-top: 0.25rem;
+
+  .alert {
+    .alert-remove {
+      float: right;
+      color: white;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

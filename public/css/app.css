@@ -10388,6 +10388,23 @@ a.text-dark:focus {
   }
 }
 
+#alerts {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0 2rem;
+  margin-top: 0.25rem;
+}
+
+#alerts .alert .alert-remove {
+  float: right;
+  color: white;
+}
+
+#alerts .alert .alert-remove:hover {
+  color: black;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
