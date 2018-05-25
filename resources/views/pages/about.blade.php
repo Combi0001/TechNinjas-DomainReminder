@@ -2,7 +2,7 @@
 @section('title', 'About')
 @section('content')
 
-    <div class="container light-text" style="padding: 30px;">
+    <div class="container dark-text" style="padding: 30px;">
             <div style="max-width:80%;margin-left:10%;padding:10px;"><h4 style="text-align:center;">What does our site do?</h4>
             <p>With our site a user will be able to add a series of domains to a list that our site will check on and
                 report the status change to that user. This allows for users to be able to get notified when a domain
@@ -17,7 +17,7 @@
                 Who don’t want to check all the time themselves
                 Who forget to check a domain and its already been taken when they do remember.</p></div>
             <h4 style="text-align:center;">About the developers</h4>
-            <div style="text-align:left;width:60%;min-width:200px;margin-left:10%;padding:10px;"><h5>Joe Awwad</h5>
+            <div style="text-align:left;width:60%;min-width:200px;margin-left:10%;padding:10px;"><div class="h5 member">Joe Awwad</div>
             <p>
               Joe has no formal background in IT, however, he has a passion for it.
 Joe loves web development and he enjoys the aspects of web security. Joe
@@ -26,7 +26,7 @@ always loves learning new things and putting the learned skills to use!
 Joe enjoys web development and programming. He also loves getting
 away from technology and doing activities such as camping and fishing.
 </p></div>
-            <div style="text-align:right;width:60%;min-width:200px;margin-left:30%;padding:10px;"><h5>Peter Lina</h5>
+            <div style="text-align:right;width:60%;min-width:200px;margin-left:30%;padding:10px;"><div class="h5 member">Peter Lina</div>
             <p>
               As well as a lifelong passion for all things technology; Peter
 completed a Cert IV traineeship in IT (network administration) in 2011. He also
@@ -38,7 +38,7 @@ Peter's Strength lies in his versatility and adaptability. His current
 abilities lack refinement, especially in the area of software development. He is
 interested in strengthening this skill.
 </p></div>
-            <div style="text-align:left;width:60%;min-width:200px;margin-left:10%;padding:10px;"><h5>Joshua Immaraj</h5>
+            <div style="text-align:left;width:60%;min-width:200px;margin-left:10%;padding:10px;"><div class="h5 member">Joshua Immaraj</div>
             <p>
               Joshua has only just developed an interest in IT while doing this
 degree. He started in 2015 but had to stop for 2 years for health reasons but is
@@ -47,7 +47,7 @@ IT.
 </p><p>
 Joshua has a passion for music and audio, including live instruments, vinyl, electronic production and recording.
             </p></div>
-            <div style="text-align:right;width:60%;min-width:200px;margin-left:30%;padding:10px;"><h5>Vengada Kandasamy</h5>
+            <div style="text-align:right;width:60%;min-width:200px;margin-left:30%;padding:10px;"><div class="h5 member">Vengada Kandasamy</div>
             <p>
               Vengada discovered he had a knack for programming in high
 school many many moons ago and has enjoyed doing it as a hobby since.
@@ -59,7 +59,7 @@ get the job done. To further prove that he is known for saying “There is
 nothing I can’t do”. Vengada is interested in discovering new ways to do
 things.
 </p></div>
-            <div style="text-align:left;width:60%;min-width:200px;margin-left:10%;padding:10px;"><h5>Adam Simpkins</h5>
+            <div style="text-align:left;width:60%;min-width:200px;margin-left:10%;padding:10px;"><div class="h5 member">Adam Simpkins</div>
             <p>
               Adam has shown an avid intrigue towards technology and it's
 inner workings from a very young age. He started teaching himself
@@ -73,7 +73,7 @@ Adam keen interests involve learning new things about
 technology, whether it's software, hardware, or mechanical. He is skilled at
 being able to comprehend new systems readily and adapt to them quickly.
 </p></div>
-            <div style="text-align:right;width:60%;min-width:200px;margin-left:30%;padding:10px;"><h5>Alex Mills</h5>
+            <div style="text-align:right;width:60%;min-width:200px;margin-left:30%;padding:10px;"><div class="h5 member">Alex Mills</div>
             <p>
               Alex is already loosely using some front-end skills part-time in
 his job. He loves learning cool new stuff that seems to be magic to non-techy

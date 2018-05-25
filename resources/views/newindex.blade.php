@@ -53,53 +53,47 @@
                     Always Free
                 </div>
                 <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequats.
+                    Domain reminder is free to use, and always will be.
                 </span>
             </div>
         </div>
         <div id="images">
             <div class="image-display">
                 <div class="image">
-                    <div class="placeholder-image">
-
-                    </div>
+                    <img src="/img/domains.png" alt="Domain List"/>
                 </div>
                 <div class="image-text">
                     <div class="text-heading">
                         Unlimited Sites
                     </div>
                     <span>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Domain Reminder has no limits to how many domains you can add.
                     </span>
                 </div>
             </div>
             <div class="image-display">
                 <div class="image">
-                    <div class="placeholder-image">
-
-                    </div>
+                    <img src="/img/mobile.png" alt="Domain List"/>
                 </div>
                 <div class="image-text">
                     <div class="text-heading">
                         Mobile Friendly
                     </div>
                     <span>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Domain Reminder is designed to be usable on any platform.
                     </span>
                 </div>
             </div>
             <div class="image-display">
                 <div class="image">
-                    <div class="placeholder-image">
-
-                    </div>
+                    <img src="/img/domains.png" alt="Domain List"/>
                 </div>
                 <div class="image-text">
                     <div class="text-heading">
                         Easy Navigation
                     </div>
                     <span>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Domain Reminder's simple design makes it easy to navigate and use.
                     </span>
                 </div>
             </div>

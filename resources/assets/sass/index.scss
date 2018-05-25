@@ -138,15 +138,12 @@ header {
           margin-bottom: 0;
         }
 
-        .placeholder-image {
-          width: 250px;
-          height: 250px;
-          border: solid thin;
-        }
-
         img {
-          max-width: 100px;
-          max-height: 100px;
+          max-width: 250px;
+          max-height: 250px;
+          -webkit-box-shadow: 0 2px 7px 3px #c9c9c9;
+          -moz-box-shadow: 0 2px 7px 3px #c9c9c9;
+          box-shadow: 0 2px 7px 3px #c9c9c9;
         }
       }
 

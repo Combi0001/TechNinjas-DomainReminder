@@ -196,15 +196,11 @@ header {
   }
 }
 
-#content #images .image-display .image .placeholder-image {
-  width: 250px;
-  height: 250px;
-  border: solid thin;
-}
-
 #content #images .image-display .image img {
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 250px;
+  max-height: 250px;
+  -webkit-box-shadow: 0 2px 7px 3px #c9c9c9;
+  box-shadow: 0 2px 7px 3px #c9c9c9;
 }
 
 #content #images .image-display .image-text {
