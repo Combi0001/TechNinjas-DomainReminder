@@ -18,10 +18,11 @@
   .alert {
     .alert-remove {
       float: right;
-      color: white;
+      color: $dark-color;
+      cursor: pointer;
 
       &:hover {
-        color: black;
+        color: $light-color;
       }
     }
   }

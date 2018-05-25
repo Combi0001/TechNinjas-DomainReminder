@@ -17,7 +17,7 @@
 
     @if(session('error'))
         <div class="alert alert-danger">
-            <span class="alert-message">{{session('error')}}></span>
+            <span class="alert-message">{{session('error')}}</span>
             <span class="alert-remove"><i class="fa fa-times" aria-hidden="true"></i></span>
         </div>
     @endif

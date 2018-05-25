@@ -10398,11 +10398,12 @@ a.text-dark:focus {
 
 #alerts .alert .alert-remove {
   float: right;
-  color: white;
+  color: #2e112d;
+  cursor: pointer;
 }
 
 #alerts .alert .alert-remove:hover {
-  color: black;
+  color: #C9283E;
 }
 
 .member {
