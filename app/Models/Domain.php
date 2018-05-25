@@ -13,6 +13,13 @@ class Domain extends Model
      */
     protected $table = 'domains';
 
+    protected $fillable = [
+        'status',
+        'last_checked',
+        'registration_date',
+        'expiry',
+    ];
+
     /**
      * The default value for attributes
      *

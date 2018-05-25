@@ -40,6 +40,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/domains/create',  'DomainsController@create');
         Route::post('/domains/create', 'DomainsController@store');
 
+        Route::get('/domains/update', function () {
+            return view('domains.update', [
+                'user' => Auth()->user(),
+            ]);
+        });
+        Route::post('/domains/update', 'DomainsController@updateDomains');
+
         Route::post('/domains/delete',  'DomainsController@deleteDomains');
         Route::post('/domains/enable',  'DomainsController@enableDomains');
         Route::post('/domains/disable', 'DomainsController@disableDomains');

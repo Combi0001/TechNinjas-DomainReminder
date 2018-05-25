@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendDomainStatusUpdates;
 use App\Rules\FQDN;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -153,5 +154,75 @@ class DomainsController extends Controller
         }
 
         return response()->json(["success" => true]);
+    }
+
+    /**
+     * Updates the domain settings, and send the notification out to the user
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateDomains(Request $request) {
+        $domains = $request->get('domains');
+
+        $notify_domains = [];
+        foreach ($domains as $domain_id => $status) {
+            $domain = Domain::where('id', '=', $domain_id)->first();
+
+            if (!$domain) {
+                continue;
+            }
+
+            switch($domain->status) {
+                case "UNSUPPORTED":
+                case "QUEUED":
+                case "UNAVAILABLE":
+                    if ($status === "UNAVAILABLE") {
+                        // No point in notifying about the domain
+                        continue;
+                    }
+                    break;
+                case "AVAILABLE":
+                    if ($status === "AVAILABLE") {
+                        // No point in notifying about the domain
+                        continue;
+                    }
+                    break;
+            }
+
+            if (!isset($notify_domains[$status])) {
+                $notify_domains[$status] = [];
+            }
+            $notify_domains[$status][] = $domain->domain;
+
+            $update = [
+                'status'       => $status,
+                'last_checked' => Carbon::now(),
+            ];
+
+            if ($status === "AVAILABLE") {
+                $update['expiry'] = Carbon::now()->addWeek();
+                $update['registration_date'] = Carbon::now()->subWeek();
+            }
+
+            $domain->update($update);
+        }
+
+        $user = Auth()->user();
+
+        // Get the users emails
+        $emails = $user->emails()->select('email')->get();
+        $to_emails = [];
+
+        // Flatten the emails
+        foreach ($emails as $email) {
+            $to_emails[] = $email->email;
+        }
+
+        dispatch(new SendDomainStatusUpdates($domains, $to_emails));
+
+        return view('domains.update', [
+            'user' => Auth()->user(),
+        ]);
     }
 }
