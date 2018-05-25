@@ -74,7 +74,7 @@ class DomainsController extends Controller
         if (!$domain) {
             // Domain doesn't exist, create new one
             $domain = new Domain();
-            $domain->domain = $url;
+            $domain->domain = strtolower($url);
             $domain->last_checked = Carbon::createFromTimestampUTC(0);
             $domain->save();
 
