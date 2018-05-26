@@ -193,7 +193,10 @@ class DomainsController extends Controller
             if (!isset($notify_domains[$status])) {
                 $notify_domains[$status] = [];
             }
-            $notify_domains[$status][] = $domain->domain;
+
+            if ($domain->pivot->nofity) {
+                $notify_domains[$status][] = $domain->domain;
+            }
 
             $update = [
                 'status'       => $status,
