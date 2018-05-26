@@ -190,7 +190,7 @@ class DomainsController extends Controller
                     break;
             }
 
-            if ($domain->pivot->nofity) {
+            if ($domain->pivot->notify === 1) {
                 if (!isset($notify_domains[$status])) {
                     $notify_domains[$status] = [];
                 }
@@ -222,7 +222,9 @@ class DomainsController extends Controller
             $to_emails[] = $email->email;
         }
 
-        dispatch(new SendDomainStatusUpdates($notify_domains, $to_emails));
+        if (!empty($notify_domains)) {
+            dispatch(new SendDomainStatusUpdates($notify_domains, $to_emails));
+        }
 
         return view('domains.update', [
             'user' => Auth()->user(),

@@ -35,7 +35,7 @@ class EmailStatusUpdate extends Mailable
 
         // Get unavailable domains to notify about
         if (isset($domains['UNAVAILABLE'])) {
-            $this->available = $domains['UNAVAILABLE'];
+            $this->unavailable = $domains['UNAVAILABLE'];
             $total += count($this->unavailable);
         } else {
             $this->unavailable = [];
