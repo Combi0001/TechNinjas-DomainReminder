@@ -167,7 +167,7 @@ class DomainsController extends Controller
 
         $notify_domains = [];
         foreach ($domains as $domain_id => $status) {
-            $domain = Domain::where('id', '=', $domain_id)->first();
+            $domain = Auth()->user()->domains()->where('domains.id', '=', $domain_id)->first();
 
             if (!$domain) {
                 continue;
@@ -190,11 +190,11 @@ class DomainsController extends Controller
                     break;
             }
 
-            if (!isset($notify_domains[$status])) {
-                $notify_domains[$status] = [];
-            }
-
             if ($domain->pivot->nofity) {
+                if (!isset($notify_domains[$status])) {
+                    $notify_domains[$status] = [];
+                }
+
                 $notify_domains[$status][] = $domain->domain;
             }
 
