@@ -219,7 +219,7 @@ class DomainsController extends Controller
             $to_emails[] = $email->email;
         }
 
-        dispatch(new SendDomainStatusUpdates($domains, $to_emails));
+        dispatch(new SendDomainStatusUpdates($notify_domains, $to_emails));
 
         return view('domains.update', [
             'user' => Auth()->user(),
